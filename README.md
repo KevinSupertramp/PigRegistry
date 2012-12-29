@@ -9,6 +9,7 @@ PigRegistry, a PHP storage registry who can remember a lot of data... like a pig
 ```php
 	require_once 'PigRegistry.php';
 ```
+
 2. Get the instance and play !
 ```php
     $key = 'Hello';
