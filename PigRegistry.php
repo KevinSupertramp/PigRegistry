@@ -50,14 +50,18 @@ class PigRegistry
 
 	    $args = func_get_args();
 	    $ar = &$this->_data;
+	    $pos = 0;
 
-	    for($i = 0; $i < $num_args - 1; ++$i)
+	    foreach($args as $key)
 	    {
-	        $key = $args[$i];
+		    if ($pos == $num_args - 1)
+		        break;
+
 	        if(!isset($ar[$key]))
 	        	$ar[$key] = array();
 
 			$ar = &$ar[$key];
+			++$pos;
 	    }
 
 	    if(empty($ar))
@@ -100,10 +104,8 @@ class PigRegistry
 	    	--$num_args;	    	
 	    }
 
-	    for($i = 0; $i < $num_args; ++$i)
+	    foreach($args as $key)
 	    {
-	        $key = $args[$i];
-
 	        if(!isset($ar[$key]) or !is_array($ar))
 	        	if($show_error)
 	        		throw new Exception('PigRegistry::get() : I have no value for key "' . $key . '" sorry.');
