@@ -44,80 +44,80 @@ class PigRegistry
 
 	public function set()
 	{
-	    $num_args = func_num_args();
-	    if($num_args < 2)
-	    	throw new Exception('PigRegistry::set() : I need at least one key and one value to remember it.');
+		$num_args = func_num_args();
+		if($num_args < 2)
+			throw new Exception('PigRegistry::set() : I need at least one key and one value to remember it.');
 
-	    $args = func_get_args();
-	    $ar = &$this->_data;
-	    $pos = 0;
+		$args = func_get_args();
+		$ar = &$this->_data;
+		$pos = 0;
 
-	    foreach($args as $key)
-	    {
-		    if ($pos == $num_args - 1)
-		        break;
+		foreach($args as $key)
+		{
+			if($pos == $num_args - 1)
+				break;
 
-	        if(!isset($ar[$key]))
-	        	$ar[$key] = array();
+			if(!isset($ar[$key]))
+				$ar[$key] = array();
 
 			$ar = &$ar[$key];
 			++$pos;
-	    }
+		}
 
-	    if(empty($ar))
-	    	$value = $args[$num_args - 1];
-	    else
-	    {
-	    	if(!is_array($ar))
-	    		$tmp_array = array($ar);
-	    	else
-	    		$tmp_array = $ar;
+		if(empty($ar))
+			$value = $args[$num_args - 1];
+		else
+		{
+			if(!is_array($ar))
+				$tmp_array = array($ar);
+			else
+				$tmp_array = $ar;
 
-	   		array_push($tmp_array, $args[$num_args - 1]);
-	   		$value = $tmp_array;
-	   	}
+			array_push($tmp_array, $args[$num_args - 1]);
+			$value = $tmp_array;
+		}
 
-  		$ar = $value;
-  		return $this;
+		$ar = $value;
+		return $this;
 	}
 
 	public function get()
 	{
-	    $num_args = func_num_args();
-	    if($num_args < 1)
-	    	return $this->_data;
+		$num_args = func_num_args();
+		if($num_args < 1)
+			return $this->_data;
 
-	    $args = func_get_args();
-	    $ar = $this->_data;
-	    $show_error = true;
+		$args = func_get_args();
+		$ar = $this->_data;
+		$show_error = true;
 
-	    if(is_bool($args[$num_args - 1]) === true)
-	    {
-	    	$show_error = $args[$num_args - 1];
-	    	array_pop($args);
-	    	--$num_args;
-	    }
-	    else if(is_int($args[$num_args - 1]) === true)
-	    {
-	    	$element = $args[$num_args - 1];
-	    	array_pop($args);
-	    	--$num_args;	    	
-	    }
+		if(is_bool($args[$num_args - 1]) === true)
+		{
+			$show_error = $args[$num_args - 1];
+			array_pop($args);
+			--$num_args;
+		}
+		else if(is_int($args[$num_args - 1]) === true)
+		{
+			$element = $args[$num_args - 1];
+			array_pop($args);
+			--$num_args;	    	
+		}
 
-	    foreach($args as $key)
-	    {
-	        if(!isset($ar[$key]) or !is_array($ar))
-	        	if($show_error)
-	        		throw new Exception('PigRegistry::get() : I have no value for key "' . $key . '" sorry.');
-	        	else
-	        		return null;
+		foreach($args as $key)
+		{
+			if(!isset($ar[$key]) or !is_array($ar))
+				if($show_error)
+					throw new Exception('PigRegistry::get() : I have no value for key "' . $key . '" sorry.');
+				else
+					return null;
 
-	        $ar = &$ar[$key];
-	    }
+			$ar = &$ar[$key];
+		}
 
-	    if(isset($element))
-	    	return $ar[$element];
-	    else
-	    	return $ar;
+		if(isset($element))
+			return $ar[$element];
+		else
+			return $ar;
 	}
 }
