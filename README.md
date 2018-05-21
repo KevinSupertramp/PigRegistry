@@ -25,6 +25,7 @@ PigRegistry, a PHP storage registry who can remember a lot of data... like a pig
 
 <h2>Advanced usage</h2>
 You can use method chaining
+
 ```php
     $pig = PigRegistry::get_instance();
     
@@ -72,6 +73,7 @@ Get all the storage
 
 <h2>Optionnal parameters</h2>
 Disable exception when trying to get a value from inexistant key
+
 ```php
     $pig = PigRegistry::get_instance();
     
@@ -118,11 +120,11 @@ are permitted provided that the following conditions are met:
 * Redistributions in binary form must reproduce the above copyright notice, this
   list of conditions and the following disclaimer in the documentation and/or
   other materials provided with the distribution.
-* Neither the name of ìKowebî nor the names of its contributors may be used to
+* Neither the name of ‚ÄúKoweb‚Äù nor the names of its contributors may be used to
   endorse or promote products derived from this software without specific prior
   written permission.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ìAS ISî AND
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ‚ÄúAS IS‚Äù AND
 ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
 DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
